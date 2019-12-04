@@ -322,7 +322,7 @@ mod tests {
     #[test]
     fn test_day3() {
         let a = Day03::new();
-        a.part1();
+        a.part1("asd");
 
         assert_eq!(true, false);
     }
