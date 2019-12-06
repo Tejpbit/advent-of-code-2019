@@ -8,10 +8,8 @@ impl Day04 {
     }
 }
 
-type Point = (i32, i32);
-
 impl Day for Day04 {
-    fn part1(&self, input: &str) -> Result<String, &str> {
+    fn part1(&self, _input: &str) -> Result<String, &str> {
         let range = 264360..=746325;
 
         let mut count = 0;
@@ -24,7 +22,7 @@ impl Day for Day04 {
         Ok(String::from(format!("{}", count)))
     }
 
-    fn part2(&self, input: &str) -> Result<String, &str> {
+    fn part2(&self, _input: &str) -> Result<String, &str> {
         let range = 264360..=746325;
 
         let mut count = 0;

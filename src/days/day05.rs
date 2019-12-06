@@ -20,7 +20,7 @@ impl Day for Day05 {
         Ok(String::from(format!("{:?}", run_computer(input))))
     }
 
-    fn part2(&self, input: &str) -> Result<String, &str> {
+    fn part2(&self, _input: &str) -> Result<String, &str> {
 
 
         Ok(String::from(format!("{}", 2)))
@@ -81,7 +81,7 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             memory[res_pos] = command_input;
             i += 2;
         } else if next % 100 == 4 {
-            let mut param_modes = next / 100; // remove op code
+            let param_modes = next / 100; // remove op code
             let param_mode_arg_1 = param_modes % 10;
             let arg = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
             println!("PROGRAM_OUTPUT > {}", arg);
@@ -102,8 +102,6 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            param_modes /= 10;
-            let param_mode_arg_3 = param_modes % 10;
             let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
             let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
             let res_ref = memory[i+3] as usize;

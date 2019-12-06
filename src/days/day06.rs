@@ -1,5 +1,4 @@
 use super::day::Day;
-use std::io::{self, Write};
 use std::collections::HashMap;
 
 
@@ -76,18 +75,6 @@ impl Day for Day06 {
         let x = you_orbit.len() + santas_orbit.len();
         Ok(String::from(format!("{}", x)))
     }
-}
-
-fn get_orbits_for(node: &'static str, child_orbits_parent: HashMap<&'static str, &'static str>) -> HashMap<&'static str, &'static str> {
-    let mut node_orbits: HashMap<&'static str, &'static str> = HashMap::new();
-    let mut previous = node;
-    let mut current = child_orbits_parent.get(node);
-    while current.is_some() {
-        node_orbits.insert(*current.unwrap(), previous);
-        previous = current.unwrap();
-        current = child_orbits_parent.get(current.unwrap());
-    }
-    return node_orbits;
 }
 
 #[cfg(test)]
