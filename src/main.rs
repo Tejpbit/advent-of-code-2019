@@ -7,6 +7,7 @@ use days::day02;
 use days::day03;
 use days::day04;
 use days::day05;
+use days::day06;
 use std::fs;
 
 fn quit_with_message(message: &str) {
@@ -64,6 +65,7 @@ fn main() {
         a.push(Box::new(day03::Day03::new()));
         a.push(Box::new(day04::Day04::new()));
         a.push(Box::new(day05::Day05::new()));
+        a.push(Box::new(day06::Day06::new()));
         match a.get(day_to_run - 1) {
             Some(day) => {
                 match day.part1(input) {
