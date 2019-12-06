@@ -16,13 +16,10 @@ impl Day for Day05 {
             .map(|s| s.parse::<i32>().expect("Couldn't read file"))
             .collect::<Vec<i32>>();
 
-
         Ok(String::from(format!("{:?}", run_computer(input))))
     }
 
     fn part2(&self, _input: &str) -> Result<String, &str> {
-
-
         Ok(String::from(format!("{}", 2)))
     }
 }
@@ -42,15 +39,13 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
     println!("In computer");
     let mut i = 0;
     loop {
-//        println!("mem {:?}", memory);
+        //        println!("mem {:?}", memory);
         let next = memory[i];
-//        println!("i {} next {}", i, next);
-        if next ==
-            99 {
+        //        println!("i {} next {}", i, next);
+        if next == 99 {
             break;
         }
         if next == 1 {
-
             let arg1_pos = memory[i + 1] as usize;
             let arg2_pos = memory[i + 2] as usize;
             let res_pos = memory[i + 3] as usize;
@@ -83,29 +78,31 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
         } else if next % 100 == 4 {
             let param_modes = next / 100; // remove op code
             let param_mode_arg_1 = param_modes % 10;
-            let arg = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
+            let arg = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
             println!("PROGRAM_OUTPUT > {}", arg);
             i += 2;
-        } else if next % 100 == 1 { // op 1 (+) with arguments for parameter modes
+        } else if next % 100 == 1 {
+            // op 1 (+) with arguments for parameter modes
             let mut param_modes = next / 100; // remove op code
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
 
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
-            let res_ref = memory[i+3] as usize;
-            memory[res_ref] = arg1+arg2;
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let res_ref = memory[i + 3] as usize;
+            memory[res_ref] = arg1 + arg2;
             i += 4;
-        } else if next % 100 == 2 { // op 2 (*) with arguments for parameter modes
+        } else if next % 100 == 2 {
+            // op 2 (*) with arguments for parameter modes
             let mut param_modes = next / 100; // remove op code
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
-            let res_ref = memory[i+3] as usize;
-            memory[res_ref] = arg1*arg2;
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let res_ref = memory[i + 3] as usize;
+            memory[res_ref] = arg1 * arg2;
             i += 4;
         } else if next % 100 == 5 {
             //        Opcode 5 is jump-if-true: if the first parameter is non-zero, it sets the instruction pointer to the value from the second parameter. Otherwise, it does nothing.
@@ -114,8 +111,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
 
             if arg1 != 0 {
                 i = arg2 as usize;
@@ -128,8 +125,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
 
             if arg1 == 0 {
                 i = arg2 as usize;
@@ -142,12 +139,11 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
-            let arg3= memory[i+3] as usize;
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg3 = memory[i + 3] as usize;
 
-
-            memory[arg3] = if arg1 < arg2 {1} else {0};
+            memory[arg3] = if arg1 < arg2 { 1 } else { 0 };
             i += 4;
         } else if next % 100 == 8 {
             //        Opcode 8 is equals: if the first parameter is equal to the second parameter, it stores 1 in the position given by the third parameter. Otherwise, it stores 0.
@@ -155,24 +151,19 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i+1], &memory, param_mode_arg_1 as usize);
-            let arg2= read_with_mode(memory[i+2], &memory, param_mode_arg_2 as usize);
-            let arg3= memory[i+3] as usize;
+            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg3 = memory[i + 3] as usize;
 
-            memory[arg3] = if arg1 == arg2 {1} else {0};
+            memory[arg3] = if arg1 == arg2 { 1 } else { 0 };
             i += 4;
         } else {
             panic!("Invalid operation")
         }
-
-
-
-
     }
 
     return Ok(memory[0]);
 }
-
 
 #[cfg(test)]
 mod tests {
@@ -182,25 +173,20 @@ mod tests {
     fn test_invalid_password() {
         let day5 = Day05::new();
 
-//        let input = "1002,4,3,4,33";
-//        let res = day5.part1(input);
+        //        let input = "1002,4,3,4,33";
+        //        let res = day5.part1(input);
 
         let input = "3,0,4,0,99";
         let res = day5.part1(input);
         println!("Hello");
         assert!(false);
-
     }
 
     #[test]
     fn test_day5_examples() {
         let day5 = Day05::new();
-        let a = day5.part1(
-            "264360-746325",
-        );
+        let a = day5.part1("264360-746325");
 
         assert_eq!(a, Ok(String::from("123")))
     }
-
-
 }

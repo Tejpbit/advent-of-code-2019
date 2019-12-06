@@ -1,7 +1,6 @@
 use super::day::Day;
 use std::collections::HashMap;
 
-
 pub struct Day06 {}
 
 impl Day06 {
@@ -20,7 +19,6 @@ impl Day for Day06 {
             })
             .collect();
 
-
         let mut count = 0;
 
         for child in child_orbits_parent.keys() {
@@ -30,7 +28,6 @@ impl Day for Day06 {
                 count += 1;
             }
         }
-
 
         Ok(String::from(format!("{:?}", count)))
     }
@@ -55,7 +52,6 @@ impl Day for Day06 {
         }
 
         let mut santas_orbit = HashMap::new();
-
 
         let mut previous = "SAN";
         let mut current = child_orbits_parent.get("SAN");
@@ -86,17 +82,17 @@ mod tests {
         let day6 = Day06::new();
 
         let input = "\
-            COM)B\n\
-            B)C\n\
-            C)D\n\
-            D)E\n\
-            E)F\n\
-            B)G\n\
-            G)H\n\
-            D)I\n\
-            E)J\n\
-            J)K\n\
-            K)L";
+                     COM)B\n\
+                     B)C\n\
+                     C)D\n\
+                     D)E\n\
+                     E)F\n\
+                     B)G\n\
+                     G)H\n\
+                     D)I\n\
+                     E)J\n\
+                     J)K\n\
+                     K)L";
         let res = day6.part1(input).unwrap();
         assert_eq!(res, String::from("42"));
     }
@@ -105,20 +101,19 @@ mod tests {
     fn test_part2() {
         let day6 = Day06::new();
         let input = "\
-            COM)B\n\
-            B)C\n\
-            C)D\n\
-            D)E\n\
-            E)F\n\
-            B)G\n\
-            G)H\n\
-            D)I\n\
-            E)J\n\
-            J)K\n\
-            K)L\n\
-            K)YOU\n\
-            I)SAN";
-
+                     COM)B\n\
+                     B)C\n\
+                     C)D\n\
+                     D)E\n\
+                     E)F\n\
+                     B)G\n\
+                     G)H\n\
+                     D)I\n\
+                     E)J\n\
+                     J)K\n\
+                     K)L\n\
+                     K)YOU\n\
+                     I)SAN";
 
         let res = day6.part2(input).unwrap();
         assert_eq!(res, String::from("4"));

@@ -15,7 +15,7 @@ impl Day for Day04 {
         let mut count = 0;
         for i in range {
             if _valid_password(&i.to_string()[..]) {
-                count +=1;
+                count += 1;
             }
         }
 
@@ -28,7 +28,7 @@ impl Day for Day04 {
         let mut count = 0;
         for i in range {
             if _valid_password_2(&i.to_string()[..]) {
-                count +=1;
+                count += 1;
             }
         }
 
@@ -38,19 +38,42 @@ impl Day for Day04 {
 
 fn _valid_password(password: &str) -> bool {
     let a: Vec<u32> = password.chars().map(|x| x.to_digit(10).unwrap()).collect();
-    let two_values_same = a.get(0).unwrap() == a.get(1).unwrap() || a.get(1).unwrap() == a.get(2).unwrap() || a.get(2).unwrap() == a.get(3).unwrap() || a.get(3).unwrap() == a.get(4).unwrap() || a.get(4).unwrap() == a.get(5).unwrap();
-    let values_increase = a.get(0).unwrap() <= a.get(1).unwrap() && a.get(1).unwrap() <= a.get(2).unwrap() && a.get(2).unwrap() <= a.get(3).unwrap() && a.get(3).unwrap() <= a.get(4).unwrap() && a.get(4).unwrap() <= a.get(5).unwrap();
+    let two_values_same = a.get(0).unwrap() == a.get(1).unwrap()
+        || a.get(1).unwrap() == a.get(2).unwrap()
+        || a.get(2).unwrap() == a.get(3).unwrap()
+        || a.get(3).unwrap() == a.get(4).unwrap()
+        || a.get(4).unwrap() == a.get(5).unwrap();
+    let values_increase = a.get(0).unwrap() <= a.get(1).unwrap()
+        && a.get(1).unwrap() <= a.get(2).unwrap()
+        && a.get(2).unwrap() <= a.get(3).unwrap()
+        && a.get(3).unwrap() <= a.get(4).unwrap()
+        && a.get(4).unwrap() <= a.get(5).unwrap();
     return two_values_same && values_increase;
 }
 
 fn _valid_password_2(password: &str) -> bool {
     let a: Vec<u32> = password.chars().map(|x| x.to_digit(10).unwrap()).collect();
-    let two_values_same = a.get(0).unwrap() == a.get(1).unwrap() || a.get(1).unwrap() == a.get(2).unwrap() || a.get(2).unwrap() == a.get(3).unwrap() || a.get(3).unwrap() == a.get(4).unwrap() || a.get(4).unwrap() == a.get(5).unwrap();
-    let values_increase = a.get(0).unwrap() <= a.get(1).unwrap() && a.get(1).unwrap() <= a.get(2).unwrap() && a.get(2).unwrap() <= a.get(3).unwrap() && a.get(3).unwrap() <= a.get(4).unwrap() && a.get(4).unwrap() <= a.get(5).unwrap();
-    let double_not_repeated = (a.get(0).unwrap() == a.get(1).unwrap() && a.get(1).unwrap() != a.get(2).unwrap())
-         || (a.get(0).unwrap() != a.get(1).unwrap() && a.get(1).unwrap() == a.get(2).unwrap() && a.get(2).unwrap() != a.get(3).unwrap())
-        || (a.get(1).unwrap() != a.get(2).unwrap() && a.get(2).unwrap() == a.get(3).unwrap() && a.get(3).unwrap() != a.get(4).unwrap())
-        || (a.get(2).unwrap() != a.get(3).unwrap() && a.get(3).unwrap() == a.get(4).unwrap() && a.get(4).unwrap() != a.get(5).unwrap())
+    let two_values_same = a.get(0).unwrap() == a.get(1).unwrap()
+        || a.get(1).unwrap() == a.get(2).unwrap()
+        || a.get(2).unwrap() == a.get(3).unwrap()
+        || a.get(3).unwrap() == a.get(4).unwrap()
+        || a.get(4).unwrap() == a.get(5).unwrap();
+    let values_increase = a.get(0).unwrap() <= a.get(1).unwrap()
+        && a.get(1).unwrap() <= a.get(2).unwrap()
+        && a.get(2).unwrap() <= a.get(3).unwrap()
+        && a.get(3).unwrap() <= a.get(4).unwrap()
+        && a.get(4).unwrap() <= a.get(5).unwrap();
+    let double_not_repeated = (a.get(0).unwrap() == a.get(1).unwrap()
+        && a.get(1).unwrap() != a.get(2).unwrap())
+        || (a.get(0).unwrap() != a.get(1).unwrap()
+            && a.get(1).unwrap() == a.get(2).unwrap()
+            && a.get(2).unwrap() != a.get(3).unwrap())
+        || (a.get(1).unwrap() != a.get(2).unwrap()
+            && a.get(2).unwrap() == a.get(3).unwrap()
+            && a.get(3).unwrap() != a.get(4).unwrap())
+        || (a.get(2).unwrap() != a.get(3).unwrap()
+            && a.get(3).unwrap() == a.get(4).unwrap()
+            && a.get(4).unwrap() != a.get(5).unwrap())
         || (a.get(3).unwrap() != a.get(4).unwrap() && a.get(4).unwrap() == a.get(5).unwrap());
     return two_values_same && values_increase && double_not_repeated;
 }
@@ -58,8 +81,6 @@ fn _valid_password_2(password: &str) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-
 
     #[test]
     fn test_invalid_password() {
@@ -78,12 +99,8 @@ mod tests {
     #[test]
     fn test_day4_examples() {
         let day3 = Day04::new();
-        let a = day3.part1(
-            "264360-746325",
-        );
+        let a = day3.part1("264360-746325");
 
         assert_eq!(a, Ok(String::from("123")))
     }
-
-
 }
