@@ -1,4 +1,5 @@
 use super::day::Day;
+use super::lib::int_computer::read_with_mode;
 use std::io::{self, Write};
 
 pub struct Day05 {}
@@ -21,16 +22,6 @@ impl Day for Day05 {
 
     fn part2(&self, _input: &str) -> Result<String, &str> {
         Ok(String::from(format!("{}", 2)))
-    }
-}
-
-fn read_with_mode(arg: i32, memory: &Vec<i32>, mode: usize) -> i32 {
-    if mode == 0 {
-        memory[arg as usize]
-    } else if mode == 1 {
-        arg
-    } else {
-        panic!("Invalid read mode");
     }
 }
 

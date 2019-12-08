@@ -8,6 +8,9 @@ use days::day03;
 use days::day04;
 use days::day05;
 use days::day06;
+use days::day07;
+use days::day08;
+use env_logger;
 use std::fs;
 
 fn quit_with_message(message: &str) {
@@ -15,16 +18,8 @@ fn quit_with_message(message: &str) {
     std::process::exit(1);
 }
 
-/*
-*  Featurelist:
-* - send specific input file to specific day.
-* - run Day trait run function needs to receive path of input
-* - extract a parse function from a run function
-    - enabling parse to just take a file path and parse it to a format and then call run with it
-    - enabling us to start calling run from tests with inputs not defined in files
-*/
-
 fn main() {
+    env_logger::init();
     let matches = App::new("Advent of Code 2019")
         .version("0.1")
         .author("André Samuelsson")
@@ -66,6 +61,8 @@ fn main() {
         a.push(Box::new(day04::Day04::new()));
         a.push(Box::new(day05::Day05::new()));
         a.push(Box::new(day06::Day06::new()));
+        a.push(Box::new(day07::Day07::new()));
+        a.push(Box::new(day08::Day08::new()));
         match a.get(day_to_run - 1) {
             Some(day) => {
                 match day.part1(input) {
