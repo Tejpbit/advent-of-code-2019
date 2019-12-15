@@ -1,5 +1,5 @@
 use super::day::Day;
-use super::lib::int_computer::read_with_mode;
+use super::lib::int_computer::read_with_mode_old;
 use std::io::{self, Write};
 
 pub struct Day05 {}
@@ -69,7 +69,7 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
         } else if next % 100 == 4 {
             let param_modes = next / 100; // remove op code
             let param_mode_arg_1 = param_modes % 10;
-            let arg = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
             println!("PROGRAM_OUTPUT > {}", arg);
             i += 2;
         } else if next % 100 == 1 {
@@ -79,8 +79,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
 
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
             let res_ref = memory[i + 3] as usize;
             memory[res_ref] = arg1 + arg2;
             i += 4;
@@ -90,8 +90,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
             let res_ref = memory[i + 3] as usize;
             memory[res_ref] = arg1 * arg2;
             i += 4;
@@ -102,8 +102,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
 
             if arg1 != 0 {
                 i = arg2 as usize;
@@ -116,8 +116,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
 
             if arg1 == 0 {
                 i = arg2 as usize;
@@ -130,8 +130,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
             let arg3 = memory[i + 3] as usize;
 
             memory[arg3] = if arg1 < arg2 { 1 } else { 0 };
@@ -142,8 +142,8 @@ fn run_computer(input: Vec<i32>) -> Result<i32, String> {
             let param_mode_arg_1 = param_modes % 10;
             param_modes /= 10;
             let param_mode_arg_2 = param_modes % 10;
-            let arg1 = read_with_mode(memory[i + 1], &memory, param_mode_arg_1 as usize);
-            let arg2 = read_with_mode(memory[i + 2], &memory, param_mode_arg_2 as usize);
+            let arg1 = read_with_mode_old(memory[i + 1], &memory, param_mode_arg_1 as usize);
+            let arg2 = read_with_mode_old(memory[i + 2], &memory, param_mode_arg_2 as usize);
             let arg3 = memory[i + 3] as usize;
 
             memory[arg3] = if arg1 == arg2 { 1 } else { 0 };

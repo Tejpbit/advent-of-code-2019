@@ -10,6 +10,9 @@ use days::day05;
 use days::day06;
 use days::day07;
 use days::day08;
+use days::day09;
+use days::day10;
+use days::day15;
 use env_logger;
 use std::fs;
 
@@ -63,6 +66,13 @@ fn main() {
         a.push(Box::new(day06::Day06::new()));
         a.push(Box::new(day07::Day07::new()));
         a.push(Box::new(day08::Day08::new()));
+        a.push(Box::new(day09::Day09::new()));
+        a.push(Box::new(day10::Day10::new()));
+        a.push(Box::new(day15::Day15::new()));
+        a.push(Box::new(day15::Day15::new()));
+        a.push(Box::new(day15::Day15::new()));
+        a.push(Box::new(day15::Day15::new()));
+        a.push(Box::new(day15::Day15::new()));
         match a.get(day_to_run - 1) {
             Some(day) => {
                 match day.part1(input) {
